@@ -13,5 +13,8 @@ public class RegistroTemperatura {
   private LocalDateTime fechaMedicion;
   private long temperatura;
 
+  public RegistroTemperatura(){
+    super();
+  }
 
 }

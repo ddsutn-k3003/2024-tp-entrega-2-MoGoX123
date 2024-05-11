@@ -90,4 +90,12 @@ public class Fachada implements ar.edu.utn.dds.k3003.facades.FachadaHeladeras{
   public void setViandasProxy(FachadaViandas fachadaViandas) {
     this.fachadaViandas = fachadaViandas;
   }
+
+  public HeladeraDTO obtenerHeladeraPorId(Long id) throws NoSuchElementException{
+    return this.heladeraMapper.originToDTO(this.repoHeladera.findById(id));
+  }
+
+  public List<HeladeraDTO> obtenerHeladeras() {
+    return this.heladeraMapper.originToListDTO(this.repoHeladera.getAll());
+  }
 }

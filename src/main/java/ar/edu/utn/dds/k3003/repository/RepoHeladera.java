@@ -3,6 +3,7 @@ package ar.edu.utn.dds.k3003.repository;
 import ar.edu.utn.dds.k3003.model.Heladera;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -32,5 +33,9 @@ public class RepoHeladera {
 
   public int size() {
     return heladeras.size();
+  }
+
+  public List<Heladera> getAll() {
+    return (List<Heladera>) this.heladeras;
   }
 }
