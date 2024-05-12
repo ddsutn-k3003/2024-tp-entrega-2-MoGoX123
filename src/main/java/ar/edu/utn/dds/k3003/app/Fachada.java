@@ -20,29 +20,25 @@ public class Fachada implements ar.edu.utn.dds.k3003.facades.FachadaHeladeras{
 
   private FachadaViandas fachadaViandas;
   private RepoHeladera repoHeladera;
-  private HeladeraMapper heladeraMapper;
-  private TemperaturaMapper temperaturaMapper;
+  private static HeladeraMapper heladeraMapper = new HeladeraMapper();
+  private static TemperaturaMapper temperaturaMapper = new TemperaturaMapper();
 
   public Fachada() {
     this.repoHeladera = new RepoHeladera();
-    this.heladeraMapper = new HeladeraMapper();
-    this.temperaturaMapper = new TemperaturaMapper();
   }
 
-  public Fachada(RepoHeladera repoHeladera, HeladeraMapper heladeraMapper, TemperaturaMapper temperaturaMapper) {
+  public Fachada(RepoHeladera repoHeladera) {
     this.repoHeladera = repoHeladera;
-    this.heladeraMapper = heladeraMapper;
-    this.temperaturaMapper = temperaturaMapper;
   }
 
   @Override
   public HeladeraDTO agregar(HeladeraDTO heladeraDTO) {
 
     // new Heladera(heladeraDTO.getNombre());
-    Heladera heladera = this.heladeraMapper.DTOtoOrigin(heladeraDTO);
+    Heladera heladera = heladeraMapper.DTOtoOrigin(heladeraDTO);
     heladera = this.repoHeladera.save(heladera);
 
-    return this.heladeraMapper.originToDTO(heladera);
+    return heladeraMapper.originToDTO(heladera);
   }
 
   @Override
@@ -75,7 +71,7 @@ public class Fachada implements ar.edu.utn.dds.k3003.facades.FachadaHeladeras{
   public void temperatura(TemperaturaDTO temperaturaDTO) {
 
     Heladera heladera = this.repoHeladera.findById(Long.valueOf(temperaturaDTO.getHeladeraId()));
-    heladera.AgregarTemperatura(this.temperaturaMapper.DTOtoOrigin(temperaturaDTO));
+    heladera.AgregarTemperatura(temperaturaMapper.DTOtoOrigin(temperaturaDTO));
   }
 
   @Override
@@ -83,7 +79,7 @@ public class Fachada implements ar.edu.utn.dds.k3003.facades.FachadaHeladeras{
 
     Heladera heladera = this.repoHeladera.findById(Long.valueOf(heladeraId));
 
-    return this.temperaturaMapper.listOriginToListDTO(heladera.getRegistroTemperaturas(), heladera.getId());
+    return temperaturaMapper.listOriginToListDTO(heladera.getRegistroTemperaturas(), heladera.getId());
   }
 
   @Override
@@ -92,10 +88,10 @@ public class Fachada implements ar.edu.utn.dds.k3003.facades.FachadaHeladeras{
   }
 
   public HeladeraDTO obtenerHeladeraPorId(Long id) throws NoSuchElementException{
-    return this.heladeraMapper.originToDTO(this.repoHeladera.findById(id));
+    return heladeraMapper.originToDTO(this.repoHeladera.findById(id));
   }
 
   public List<HeladeraDTO> obtenerHeladeras() {
-    return this.heladeraMapper.originToListDTO(this.repoHeladera.getAll());
+    return heladeraMapper.originToListDTO(this.repoHeladera.getAll());
   }
 }
