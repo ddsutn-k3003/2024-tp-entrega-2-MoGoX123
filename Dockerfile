@@ -13,7 +13,7 @@ FROM openjdk:17-jdk-slim
 <<<<<<< HEAD
 COPY --from=build /target/app-cli-0.0.1-SNAPSHOT-jar-with-dependencies.jar app.jar
 =======
-COPY --from=build /target/copiame-cli-0.0.1-SNAPSHOT-jar-with-dependencies.jar app.jar
+COPY --from=build /target/app-cli-0.0.1-SNAPSHOT-jar-with-dependencies.jar app.jar
 >>>>>>> df7850bc1af11536236c10d2b4e4a92b411e2f06
 # ENV PORT=8080
 EXPOSE 8080
