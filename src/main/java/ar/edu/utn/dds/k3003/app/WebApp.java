@@ -1,4 +1,4 @@
-package ar.edu.utn.dds.k3003;
+package ar.edu.utn.dds.k3003.app;
 
 import ar.edu.utn.dds.k3003.app.Fachada;
 import ar.edu.utn.dds.k3003.auxResource.DTOs.HeladeraDTOAux;
@@ -24,6 +24,10 @@ public class WebApp {
   public static void main(String[] args) {
 
     // Variables de entorno
+    String URL_VIANDAS = System.getenv().get("URL_VIANDAS");
+    String URL_LOGISTICA = System.getenv().get("URL_LOGISTICA");
+    String URL_HELADERAS = System.getenv().get("URL_HELADERAS");
+    String URL_COLABORADORES = System.getenv().get("URL_COLABORADORES");
     String port = System.getenv().getOrDefault("PORT", "8080");
 
     // Encendemos Javalin
