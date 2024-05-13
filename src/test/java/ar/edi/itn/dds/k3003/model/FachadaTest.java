@@ -49,8 +49,7 @@ public class FachadaTest {
 
     repoHeladera = new RepoHeladera();
 
-    fachadaHeladera = new Fachada(repoHeladera,
-        new HeladeraMapper(), new TemperaturaMapper());
+    fachadaHeladera = new Fachada(repoHeladera);
     fachadaHeladera.setViandasProxy(fachadaViandas);
 
     heladeraDTOTest1 = new HeladeraDTO(1, "Heladera Medrano UTN");
