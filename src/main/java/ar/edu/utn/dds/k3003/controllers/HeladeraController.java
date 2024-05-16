@@ -1,8 +1,7 @@
 package ar.edu.utn.dds.k3003.controllers;
 
 import ar.edu.utn.dds.k3003.app.Fachada;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.HeladeraDTOAux;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.ViandaDTOAux;
+import ar.edu.utn.dds.k3003.facades.dtos.HeladeraDTO;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,8 +30,7 @@ public class HeladeraController {
   public void addHeladera(@NotNull Context ctx) {
 
     try {
-      fachada.agregar(ctx.bodyAsClass(HeladeraDTOAux.class).toDTO());
-      ctx.status(200).result("Heladera agregada correctamente");
+      ctx.status(200).json(fachada.agregar(ctx.bodyAsClass(HeladeraDTO.class)));
     }
     catch (Exception e){
       e.printStackTrace();
@@ -46,9 +44,7 @@ public class HeladeraController {
     try {
       long id = Long.parseLong(ctx.pathParam("id"));
 
-      HeladeraDTOAux heladeraDTO = new HeladeraDTOAux(fachada.obtenerHeladeraPorId(id));
-      heladeraDTO.setCantidadDeViandas(fachada.cantidadViandas(Math.toIntExact(id)));
-
+      HeladeraDTO heladeraDTO = fachada.obtenerHeladeraPorId(id);
       ctx.status(200).json(heladeraDTO);
     }
     catch (NoSuchElementException e){

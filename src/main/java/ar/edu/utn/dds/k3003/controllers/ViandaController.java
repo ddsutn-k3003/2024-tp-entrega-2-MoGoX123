@@ -1,9 +1,8 @@
 package ar.edu.utn.dds.k3003.controllers;
 
 import ar.edu.utn.dds.k3003.app.Fachada;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.RetiroDTOAux;
 import ar.edu.utn.dds.k3003.auxResource.DTOs.ViandaDTOAux;
-import ar.edu.utn.dds.k3003.facades.FachadaViandas;
+import ar.edu.utn.dds.k3003.facades.dtos.RetiroDTO;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +36,7 @@ public class ViandaController {
   public void deleteVianda(@NotNull Context context) {
 
     try {
-      fachadaHeladera.retirar(context.bodyAsClass(RetiroDTOAux.class).toDTO());
+      fachadaHeladera.retirar(context.bodyAsClass(RetiroDTO.class));
       context.status(200).result("Vianda retirada correctamente");
     }
     catch (NoSuchElementException e){

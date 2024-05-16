@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class RepoHeladera {
   private final Collection<Heladera> heladeras = new ArrayList<>();
+  private static AtomicLong seqId = new AtomicLong();
 
   public Heladera save(Heladera heladera) {
 
-    try {
-      Heladera heladeraAux = this.findById(heladera.getId());
-      heladeraAux.setNombre(heladera.getNombre());
-      return heladeraAux;
-    }catch (NoSuchElementException e){
+    if (Objects.isNull(heladera.getId())) {
+      heladera.setId(seqId.getAndIncrement());
       this.heladeras.add(heladera);
-      return heladera;
     }
+    return heladera;
   }
 
   public Heladera findById(Long heladeraId) throws NoSuchElementException {

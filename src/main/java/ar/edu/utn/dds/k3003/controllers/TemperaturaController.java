@@ -1,7 +1,7 @@
 package ar.edu.utn.dds.k3003.controllers;
 
 import ar.edu.utn.dds.k3003.app.Fachada;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.TemperaturaDTOAux;
+import ar.edu.utn.dds.k3003.facades.dtos.TemperaturaDTO;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +17,7 @@ public class TemperaturaController {
   public void addTemperatura(@NotNull Context context) {
 
     try {
-      fachadaHeladera.temperatura(context.bodyAsClass(TemperaturaDTOAux.class).toDto());
+      fachadaHeladera.temperatura(context.bodyAsClass(TemperaturaDTO.class));
       context.status(200).result("Temperatura registrada correctamente");
     }
     catch (NoSuchElementException e){

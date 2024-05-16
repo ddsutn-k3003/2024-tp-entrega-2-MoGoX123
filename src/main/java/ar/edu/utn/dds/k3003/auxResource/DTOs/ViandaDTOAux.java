@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ViandaDTOAux {
 
-  private Long heladeraId;
-  private String qrVianda;
+  public Long heladeraId;
+  public String qrVianda;
 
 }

@@ -1,18 +1,11 @@
 package ar.edu.utn.dds.k3003.app;
 
-import ar.edu.utn.dds.k3003.app.Fachada;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.HeladeraDTOAux;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.RetiroDTOAux;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.TemperaturaDTOAux;
-import ar.edu.utn.dds.k3003.auxResource.DTOs.ViandaDTOAux;
 import ar.edu.utn.dds.k3003.auxResource.fachadas.FachadaViandaAux;
 import ar.edu.utn.dds.k3003.controllers.HeladeraController;
 import ar.edu.utn.dds.k3003.controllers.TemperaturaController;
 import ar.edu.utn.dds.k3003.controllers.ViandaController;
 import ar.edu.utn.dds.k3003.facades.dtos.HeladeraDTO;
 import io.javalin.Javalin;
-
-import java.util.NoSuchElementException;
 
 public class WebApp {
 
@@ -35,7 +28,7 @@ public class WebApp {
 
     // Este es solo para pruebas locales
       fachada.setViandasProxy(new FachadaViandaAux());
-      fachada.agregar(new HeladeraDTO(1, "heladera prueba"));
+      fachada.agregar(new HeladeraDTO(1, "heladera prueba", 0));
     // Este es solo para pruebas locales
 
     // LLAMADAS-------------------------------------------------------------------------------------

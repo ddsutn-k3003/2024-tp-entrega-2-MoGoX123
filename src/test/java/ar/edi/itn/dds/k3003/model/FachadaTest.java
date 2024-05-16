@@ -52,9 +52,9 @@ public class FachadaTest {
     fachadaHeladera = new Fachada(repoHeladera);
     fachadaHeladera.setViandasProxy(fachadaViandas);
 
-    heladeraDTOTest1 = new HeladeraDTO(1, "Heladera Medrano UTN");
-    heladeraDTOTest2 = new HeladeraDTO(2, "Heladera Campus UTN");
-    heladeraDTOTest3 = new HeladeraDTO(3, "Heladera Avellaneda UTN");
+    heladeraDTOTest1 = new HeladeraDTO(null, "Heladera Medrano UTN", 0);
+    heladeraDTOTest2 = new HeladeraDTO(null, "Heladera Campus UTN", 0);
+    heladeraDTOTest3 = new HeladeraDTO(null, "Heladera Avellaneda UTN", 0);
 
     codigoQrVianda1 = "vianda1";
     LocalDateTime tiempo = LocalDateTime.now();
