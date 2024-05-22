@@ -1,6 +1,5 @@
 package ar.edu.utn.dds.k3003.app;
 
-import ar.edu.utn.dds.k3003.auxResource.fachadas.FachadaViandaAux;
 import ar.edu.utn.dds.k3003.clients.ViandasProxy;
 import ar.edu.utn.dds.k3003.controllers.HeladeraController;
 import ar.edu.utn.dds.k3003.controllers.TemperaturaController;
