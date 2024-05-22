@@ -24,6 +24,7 @@ public class ViandaController {
       context.status(200).result("Vianda depositada correctamente");
     }
     catch (NoSuchElementException e){
+      e.printStackTrace();
       context.status(400).result("Error de solicitud");
     }
     catch (Exception e){

@@ -1,11 +1,14 @@
 package ar.edu.utn.dds.k3003.app;
 
 import ar.edu.utn.dds.k3003.auxResource.fachadas.FachadaViandaAux;
+import ar.edu.utn.dds.k3003.clients.ViandasProxy;
 import ar.edu.utn.dds.k3003.controllers.HeladeraController;
 import ar.edu.utn.dds.k3003.controllers.TemperaturaController;
 import ar.edu.utn.dds.k3003.controllers.ViandaController;
 import ar.edu.utn.dds.k3003.facades.dtos.HeladeraDTO;
 import io.javalin.Javalin;
+
+import static ar.edu.utn.dds.k3003.Evaluador.createObjectMapper;
 
 public class WebApp {
 
@@ -17,19 +20,13 @@ public class WebApp {
   public static void main(String[] args) {
 
     // Variables de entorno
-    String URL_VIANDAS = System.getenv().get("URL_VIANDAS");
-    String URL_LOGISTICA = System.getenv().get("URL_LOGISTICA");
-    String URL_HELADERAS = System.getenv().get("URL_HELADERAS");
-    String URL_COLABORADORES = System.getenv().get("URL_COLABORADORES");
     String port = System.getenv().getOrDefault("PORT", "8080");
 
     // Encendemos Javalin
     Javalin app = Javalin.create().start(Integer.parseInt(port));
 
-    // Este es solo para pruebas locales
-      fachada.setViandasProxy(new FachadaViandaAux());
-      fachada.agregar(new HeladeraDTO(1, "heladera prueba", 0));
-    // Este es solo para pruebas locales
+    var objectMapper = createObjectMapper();
+    fachada.setViandasProxy(new ViandasProxy(objectMapper));
 
     // LLAMADAS-------------------------------------------------------------------------------------
 

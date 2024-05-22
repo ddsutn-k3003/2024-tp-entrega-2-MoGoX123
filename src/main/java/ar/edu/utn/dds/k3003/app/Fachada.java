@@ -19,12 +19,11 @@ import java.util.NoSuchElementException;
 public class Fachada implements ar.edu.utn.dds.k3003.facades.FachadaHeladeras{
 
   private FachadaViandas fachadaViandas;
-  private RepoHeladera repoHeladera;
+  private RepoHeladera repoHeladera = new RepoHeladera();
   private static HeladeraMapper heladeraMapper = new HeladeraMapper();
   private static TemperaturaMapper temperaturaMapper = new TemperaturaMapper();
 
   public Fachada() {
-    this.repoHeladera = new RepoHeladera();
   }
 
   public Fachada(RepoHeladera repoHeladera) {
